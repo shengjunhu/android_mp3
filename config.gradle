@@ -1,0 +1,108 @@
+ext {
+
+    plugins = [
+            //应用
+            application                 : 'com.android.application',
+            //库
+            library                     : 'com.android.library',
+    ]
+
+    android = [
+            applicationId               : "com.hsj.sampale.audio",
+            compileSdkVersion           : 29,
+            buildToolsVersion           : "29.0.3",
+            minSdkVersion               : 19,
+            targetSdkVersion            : 29,
+            versionCode                 : Integer.parseInt(buildTime()),
+            versionName                 : "1.0.1",
+
+            //数据库版本号
+            DB_VERSION                  : "1",
+
+            //服务器地址
+            //HOST_DEBUG                : "\"http://asj.project.mioto.cn:8081/asj\"",
+            HOST_DEBUG                  : "\"http://www.3dfacelink.net:8081/asj\"",
+            HOST_RELEASE                : "\"http://www.3dfacelink.net:8081/asj\"",
+    ]
+
+    dependencies = [
+
+            //测试
+            testInstrumentationRunner   : 'androidx.test.runner.AndroidJUnitRunner',
+            testJunit                   : 'junit:junit:4.13',
+            testExt                     : 'androidx.test.ext:junit:1.1.1',
+            testEspresso                : 'androidx.test.espresso:espresso-core:3.2.0',
+
+            //Jetpack
+            core                        : 'androidx.core:core:1.2.0',
+            multidex                    : 'androidx.multidex:multidex:2.0.1',
+            annotations                 : 'androidx.annotation:annotation:1.1.0',
+            constraint_layout           : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            appcompat                   : 'androidx.appcompat:appcompat:1.1.0',
+            material                    : 'com.google.android.material:material:1.2.0-alpha05',
+            cardview                    : 'androidx.cardview:cardview:1.0.0',
+            recyclerview                : 'androidx.recyclerview:recyclerview:1.2.0-alpha02',
+            gridlayout                  : 'androidx.gridlayout:gridlayout:1.0.0',
+            webkit                      : 'androidx.webkit:webkit:1.2.0',
+            viewpager                   : 'androidx.viewpager:viewpager:1.0.0',
+            viewpager2                  : 'androidx.viewpager2:viewpager2:1.1.0-alpha01',
+            work_runtime                : 'androidx.work:work-runtime:2.4.0-alpha02',
+            work_rxjava2                : 'androidx.work:work-rxjava2:2.4.0-alpha02',
+            legacy                      : 'androidx.legacy:legacy-support-v4:1.0.0',
+            lifecycle_livedata          : 'androidx.lifecycle:lifecycle-livedata:2.3.0-alpha01',
+            lifecycle_viewmodel         : 'androidx.lifecycle:lifecycle-viewmodel:2.3.0-alpha01',
+            lifecycle_extensions        : 'androidx.lifecycle:lifecycle-extensions:2.3.0-alpha01',
+            exifinterface               : 'androidx.exifinterface:exifinterface:1.2.0-beta01',
+
+            //数据库
+            room_runtime                : 'androidx.room:room-runtime:2.2.5',
+            room_compiler               : 'androidx.room:room-compiler:2.2.5',
+            room_migration              : 'androidx.room:room-migration:2.2.5',
+            room_rxjava2                : 'androidx.room:room-rxjava2:2.2.5',
+
+            //滑动控件
+            refresh_layout              : 'com.scwang.smart:refresh-layout-kernel:2.0.0',
+            refresh_header              : 'com.scwang.smart:refresh-header-classics:2.0.0',
+            refresh_footer              : 'com.scwang.smart:refresh-footer-classics:2.0.0',
+
+            //机械学习
+            tensorflow                  : 'org.tensorflow:tensorflow-android:1.13.1',
+
+            //MQTT
+            mqtt                        : 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.2',
+            mqtt_service                : 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1',
+
+            //网络请求框架
+            kalle                       : 'com.yanzhenjie:kalle:0.1.7',
+            okalle                      : 'com.yanzhenjie:okalle:0.1.7',
+
+            //Json解析
+            gson                        : 'com.google.code.gson:gson:2.8.6',
+            fastjson                    : 'com.alibaba:fastjson:1.1.71.android',
+
+            //RxJava
+            rxjava                      : 'io.reactivex.rxjava2:rxjava:2.2.11',
+            rxandroid                   : 'io.reactivex.rxjava2:rxandroid:2.1.1',
+
+            //Glide
+            glide                       : 'com.github.bumptech.glide:glide:4.11.0',
+            glide_compiler              : 'com.github.bumptech.glide:compiler:4.11.0',
+
+            //EventBus
+            eventBus                    : 'org.greenrobot:eventbus:3.2.0',
+            liveBus                     : 'com.jeremyliao:live-event-bus-x:1.6.1',
+
+            //LeakCanary
+            leakcanary                  : 'com.squareup.leakcanary:leakcanary-android:2.2',
+
+            //Zxing
+            zxing                       : 'com.google.zxing:core:3.3.4',
+
+            timepicker                  : 'com.bigkoo:pickerview:2.0.8',
+    ]
+
+}
+
+static def buildTime() {
+    return new Date().format("yyMMddHH", TimeZone.getTimeZone("GMT+08:00")).toString()
+}

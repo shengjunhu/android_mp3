@@ -1,0 +1,79 @@
+apply plugin: rootProject.ext.plugins.library
+
+static def buildTime() {
+    return new Date().format("yyMMddHH", TimeZone.getTimeZone("GMT+08:00"))
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner rootProject.ext.dependencies.testInstrumentationRunner
+        consumerProguardFiles "consumer-rules.pro"
+
+        ndk { abiFilters "armeabi-v7a", "arm64-v8a" }
+        externalNativeBuild {
+            cmake {
+                cFlags "-DSTDC_HEADERS"
+                cppFlags "-std=c++11 -frtti -fexceptions"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "sdk_mp3_lame_v${buildTime()}_${variant.buildType.name}.aar"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDir 'jniLibs'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        warning 'InvalidPackage'
+        disable 'GoogleAppIndexingWarning'
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    testImplementation rootProject.ext.dependencies.testJunit
+    androidTestImplementation rootProject.ext.dependencies.testExt
+    androidTestImplementation rootProject.ext.dependencies.testEspresso
+
+    implementation rootProject.ext.dependencies.appcompat
+}
