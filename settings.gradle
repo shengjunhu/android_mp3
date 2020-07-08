@@ -1,4 +1,4 @@
 rootProject.name = "android_sample_audio"
-include ':app'
+include ':sample_audio'
 include ':sdk_fmod'
 include ':sdk_mp3_lame'

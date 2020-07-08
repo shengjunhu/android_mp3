@@ -8,21 +8,13 @@ ext {
     ]
 
     android = [
-            applicationId               : "com.hsj.sampale.audio",
+            applicationId               : "com.hsj.sample.audio",
             compileSdkVersion           : 29,
             buildToolsVersion           : "29.0.3",
             minSdkVersion               : 19,
             targetSdkVersion            : 29,
             versionCode                 : Integer.parseInt(buildTime()),
-            versionName                 : "1.0.1",
-
-            //数据库版本号
-            DB_VERSION                  : "1",
-
-            //服务器地址
-            //HOST_DEBUG                : "\"http://asj.project.mioto.cn:8081/asj\"",
-            HOST_DEBUG                  : "\"http://www.3dfacelink.net:8081/asj\"",
-            HOST_RELEASE                : "\"http://www.3dfacelink.net:8081/asj\"",
+            versionName                 : "1.0.0",
     ]
 
     dependencies = [
@@ -97,8 +89,6 @@ ext {
 
             //Zxing
             zxing                       : 'com.google.zxing:core:3.3.4',
-
-            timepicker                  : 'com.bigkoo:pickerview:2.0.8',
     ]
 
 }

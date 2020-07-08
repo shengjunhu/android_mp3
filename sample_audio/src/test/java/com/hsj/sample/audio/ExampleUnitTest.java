@@ -1,4 +1,4 @@
-package com.hsj.sampale.audio;
+package com.hsj.sample.audio;
 
 import org.junit.Test;
 
