@@ -1,8 +1,8 @@
-package com.hsj.sample.audio;
+package com.hsj.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import com.hsj.sample.R;
 
 public class MainActivity extends AppCompatActivity {
 
