@@ -2,56 +2,23 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 # Set complie type
+SET(MODULE_NAME mp3lame)
 set(CMAKE_BUILE_TYPE RELEASE)
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -s")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -s")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
 
-# Set abi output dir
-#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
-
 # Set include(*.h/*hpp) dir
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libmp3lame)
+include_directories(./ ./libmp3lame)
 
 # Set source(*.c/*.cpp) dir
-aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} SRC_DIR)
-aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/libmp3lame SRC_LAME)
+aux_source_directory(. SRC_DIR)
+aux_source_directory(libmp3lame SRC_LAME)
 list(APPEND SRC_DIR ${SRC_LAME})
 
-# Set source(*.h/*.cpp/*.c/*.cpp) dir
-#file(GLOB SRC_DIR
-#        *.h
-#        *.cpp
-#        libmp3lame/*.h
-#        libmp3lame/*c
-#)
+add_library(${MODULE_NAME} SHARED ${SRC_DIR})
 
-add_library(
-        # Sets the name of the library.
-        mp3lame
+find_library(log-lib log)
 
-        # Sets the library as a shared library.
-        SHARED
-
-        # Provides a relative path to your source file(s).
-        ${SRC_DIR}
-)
-
-find_library(
-        # Sets the name of the path variable.
-        log-lib
-
-        # Specifies the name of the NDK library that
-        # you want CMake to locate.
-        log
-)
-
-target_link_libraries(
-        # Specifies the target library.
-        mp3lame
-
-        # Links the target library to the log library
-        # included in the NDK.
-        ${log-lib}
-)
+target_link_libraries(${MODULE_NAME} ${log-lib})

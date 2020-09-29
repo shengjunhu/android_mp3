@@ -2,7 +2,7 @@ package com.hsj.mp3.core;
 
 /**
  * @Author:hsj
- * @Date:2020-06-19 12:44
+ * @Date:2020-06-19
  * @Class:Mp3Encoder
  * @Desc:
  */
@@ -12,11 +12,7 @@ public final class Mp3Encoder {
     }
 
     static {
-        try {
-            System.loadLibrary("mp3lame");
-        } catch (UnsatisfiedLinkError e) {
-            e.printStackTrace();
-        }
+        System.loadLibrary("mp3lame");
     }
 
     /**

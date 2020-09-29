@@ -10,8 +10,8 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
 
-        ndk { abiFilters "armeabi-v7a", "arm64-v8a" }
         testInstrumentationRunner rootProject.ext.dependencies.testInstrumentationRunner
+        ndk { abiFilters "armeabi-v7a", "arm64-v8a" }
     }
 
     buildTypes {
@@ -29,11 +29,6 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
     lintOptions {
         abortOnError false
         checkReleaseBuilds false
@@ -43,6 +38,11 @@ android {
 
     dexOptions {
         javaMaxHeapSize "4g"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     applicationVariants.all { variant ->
@@ -66,7 +66,7 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.testExt
     androidTestImplementation rootProject.ext.dependencies.testEspresso
 
-    //Jetpack
+    //JetPack
     implementation rootProject.ext.dependencies.core
     implementation rootProject.ext.dependencies.multidex
     implementation rootProject.ext.dependencies.appcompat
@@ -74,14 +74,14 @@ dependencies {
     implementation rootProject.ext.dependencies.constraint_layout
     implementation rootProject.ext.dependencies.material
 
-    //内存泄漏监控
+    //LeakCanary
     debugImplementation rootProject.ext.dependencies.leak_canary
 
     //mp3
     //implementation project(path: ':sdk_lame_mp3')
-    //implementation(name: 'sdk_lame_mp3_v20061514_release', ext: 'aar')
+    //implementation(name: 'sdk_mp3_lame_v20092810_release', ext: 'aar')
 
     //fmod
     //implementation project(path: ':sdk_fmod')
-    //implementation(name: 'sdk_fmod_v20061514_release', ext: 'aar')
+    //implementation(name: 'sdk_fmod_v20092810_release', ext: 'aar')
 }

@@ -1,9 +1,5 @@
 apply plugin: rootProject.ext.plugins.library
 
-static def buildTime() {
-    return new Date().format("yyMMddHH", TimeZone.getTimeZone("GMT+08:00"))
-}
-
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -19,11 +15,11 @@ android {
         ndk { abiFilters "armeabi-v7a", "arm64-v8a" }
         externalNativeBuild {
             cmake {
+                cFlags "-DSTDC_HEADERS"
+                cppFlags "-std=c++11 -frtti -fexceptions"
                 arguments '-DANDROID_PLATFORM=android-19',
                         '-DCMAKE_BUILD_TYPE=Release',
                         '-DANDROID_TOOLCHAIN=clang'
-                cFlags "-DSTDC_HEADERS"
-                cppFlags "-std=c++11 -frtti -fexceptions"
             }
         }
     }
@@ -32,25 +28,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    externalNativeBuild {
-        cmake {
-            path "src/main/cpp/CMakeLists.txt"
-            version "3.10.2"
-        }
-    }
-
-    sourceSets {
-        main {
-            jni.srcDirs = []
-            jniLibs.srcDir 'jniLibs'
         }
     }
 
@@ -65,9 +42,21 @@ android {
         javaMaxHeapSize "4g"
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+
     android.libraryVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "sdk_mp3_lame_v${buildTime()}_${variant.buildType.name}.aar"
+            outputFileName = "sdk_mp3lame_v${defaultConfig.versionCode}_${variant.buildType.name}.aar"
         }
     }
 

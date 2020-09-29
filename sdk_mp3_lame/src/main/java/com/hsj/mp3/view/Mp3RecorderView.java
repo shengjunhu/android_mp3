@@ -15,7 +15,7 @@ import java.io.File;
 
 /**
  * @Author:hsj
- * @Date:2020-06-24 16:42
+ * @Date:2020-06-24
  * @Class:Mp3RecorderView
  * @Desc:
  */

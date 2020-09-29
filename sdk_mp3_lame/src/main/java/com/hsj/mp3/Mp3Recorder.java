@@ -21,7 +21,7 @@ import java.io.IOException;
 
 /**
  * @Author:hsj
- * @Date:2020-06-19 17:04
+ * @Date:2020-06-19
  * @Class:MP3Recorder
  * @Desc:
  */

@@ -4,7 +4,7 @@ import android.media.AudioFormat;
 
 /**
  * @Author:hsj
- * @Date:2020-06-19 17:04
+ * @Date:2020-06-19
  * @Class:PCMFormat
  * @Desc:
  */
