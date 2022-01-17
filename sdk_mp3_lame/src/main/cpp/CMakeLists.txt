@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 # Set complie type
-SET(MODULE_NAME mp3lame)
+set(MODULE_NAME mp3lame)
 set(CMAKE_BUILE_TYPE RELEASE)
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -s")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
